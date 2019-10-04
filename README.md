@@ -75,6 +75,39 @@ BeCrazyスクールにおける**PHPフルスタックエンジニアカリキ�
 
 公開リポジトリでフォーク後、上記の内容を開発し随時コミット&プッシュを進めてください。
 
+### 開発開始までの手順
+
+1. このリポジトリをフォークして自分のプロジェクトとして立ち上げる
+
+2. クローンしてソースコードをダウンロード
+
+3. `composer install`を行い、本プロジェクトで利用するライブラリをインストール
+
+4. `.env.example`をコピーして`.env`ファイルを作成
+
+5. ターミナルまたはコマンドプロンプトでプロジェクトディレクトリに移動し、`php artisan key:generate`コマンドを実行し、アプリケーションキーの生成
+
+6. Homesteadを設定するために、以下のコマンドを実行
+
+    macOSの場合:`php vendor/bin/homestead make`
+
+    Windowsの場合:`vendor\bin\homestead make`
+
+    場合によっては鍵生成も行うこと。鍵生成については[こちら](https://it.becrazy.jp/article/laravel-homestead-setting)
+
+    その他Homesteadの設定を各自で変更してもOK
+
+7. Homestead仮想マシンを起動`vagrant up`
+
+8. `Homestead.yaml`ファイルに従いIPアドレスでアクセスして確認
+
+    この時点でWelcomeページが表示可能
+
+9. `vagrant ssh`で仮想マシンにログインし、マイグレーションを実行しテーブル作成
+
+10. 開発スタート！
+
+
 ## データベースについて
 
 各テーブルスキーマについて以下に解説します。
@@ -115,8 +148,19 @@ BeCrazyスクールにおける**PHPフルスタックエンジニアカリキ�
 これでブログに関わる全ての機能を実現できます。
 テーブルに設定している詳細のカラム情報についてはマイグレーションファイルを参照してください。(app/database/migrationsフォルダ)
 
+### DB接続情報
+
+`.env`ファイルのDB接続設定は以下の用にすると、仮想マシン内で接続可能
+
+```
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+```
+
 ## Appendex
 
 その他不明点あれば先生に聞いてください。
-
-田村仕様プロジェクト
