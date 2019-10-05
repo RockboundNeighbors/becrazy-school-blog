@@ -20,6 +20,7 @@ Route::prefix('Examination')->group(function(){
 	Route::get('titleaddform','ExamController@titleaddform');
 	Route::post('titleadd','ExamController@titleadd');
 	Route::get('titlelists','ExamController@titlelists');
+	Route::get('titleedit{id}','ExamController@titleeditform');
 	Route::post('titleedit','ExamController@titleedit');
 	Route::post('titledelete','ExamController@titledelete');
 	

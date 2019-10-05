@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
+    <title>ブログ作成試験</title>
 </head>
 <body>
     <div class="flex-center position-ref">
@@ -15,7 +16,7 @@
             </ul>
         </div>
         @endif
-        <form method="POST">
+        <form method="POST" action="titleadd">
             @csrf
             <dl>
                 <dt>タイトル</dt>
