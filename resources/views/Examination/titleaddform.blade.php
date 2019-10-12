@@ -18,6 +18,7 @@
         @endif
         <form method="POST" action="titleadd">
             @csrf
+            <input type="hidden" name="userid" value="{{Auth::id()}}"
             <dl>
                 <dt>タイトル</dt>
                 <dd><input type="text" name="title" required value="{{ old('title') }}"></dd>
@@ -28,5 +29,9 @@
             </dl>
             <input type="submit" value="投稿">
         </form>
+<form id="logout-form" action="{{ route('logout') }}" method="POST">
+    @csrf
+    <input type="submit" value="ログアウト">
+</form>
 </body>
 </html>

@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class ExamController extends Controller{
 
+	// 10/11Examコントローラーにはすべて管理者関連のメソッドを書き込む！ つまりlist関連は別のコントローラーに書き込むのかな？
+	public function __construct(){
+		$this->middleware("auth");
+	}
+
 	public function titleaddform(){
 		return view('Examination.titleaddform');
 	}
@@ -17,6 +22,7 @@ class ExamController extends Controller{
 		$validated_data = $request ->validate([
 			'title' => 'required|string|max:255','content' =>'required|string']);
 		$post = new Post();
+		$post->user_id = $request->userid;
 		$post->title = $request->title;
 		$post->content = $request->content;
 		$post->save();
