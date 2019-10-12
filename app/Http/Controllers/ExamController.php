@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-//マイグレしてから書き込む
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -37,7 +36,12 @@ class ExamController extends Controller{
 		return view("Examination.titleeditform",array("titleedit" => $title));
 	}
 
-	public function titledelete(){
+	public function titledelete(Request $request){
+		$validated_data = $request->validate([
+			'ids' => 'array|required'
+		]);
+		Post::destroy($request->ids);
+		return redirect("Examination/titlelists");
 
 	}
 

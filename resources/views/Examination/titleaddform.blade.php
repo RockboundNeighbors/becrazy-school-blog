@@ -24,7 +24,7 @@
             </dl>
             <dl>
                 <dt>本文</dt>
-                <dd><textarea name="content" required>{{ old('content') }}</textarea></dd>
+                <dd><textarea name="content" required></textarea></dd>
             </dl>
             <input type="submit" value="投稿">
         </form>

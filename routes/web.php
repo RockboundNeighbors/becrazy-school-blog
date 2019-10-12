@@ -34,4 +34,19 @@ Route::prefix('Examination')->group(function(){
 	Route::get('top',function(){
 		return view('Examination/top');
 	});
+
+	//ログイン機能とかもいれたんだったかな？
+	Route::get('login', 'Auth\ExamLoginController@showLoginForm')->name('login');
+
+	Route::post('login', 'Auth\ExamLoginController@login');
+	Route::post('logout', 'Auth\ExamLoginController@logout')->name('logout');
+
+	Route::get('register', 'Auth\ExamRegisterController@showRegistrationForm')->name('register');
+	Route::post('register', 'Auth\ExamRegisterController@register');
 });
+
+
+
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

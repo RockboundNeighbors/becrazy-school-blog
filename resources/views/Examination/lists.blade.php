@@ -23,10 +23,7 @@
                             <td>{{ $title->id }}</td>
                             <td><a href="titleedit{{$title->id}}">{{ $title->title }}</a></td>
                             
-                            <?php if ({{$title->status}}=="publish"): ?>
-                            <td>公開済み</td>
-                            <?php elseif ({{$title->status}} == "draft") : ?>
-                            <td>下書き</td>
+                            
                         </tr>
                     @endforeach
                 </tbody>
