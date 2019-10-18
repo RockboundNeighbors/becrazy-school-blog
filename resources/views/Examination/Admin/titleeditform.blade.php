@@ -19,7 +19,7 @@
         </dl>
         <input type="submit" value="更新">
     </form>
-<a href = "add">新記事作成</a>
+<a href ="index">管理者ページへ</a>
 <form id="logout-form" action="{{ route('logout') }}" method="POST">
     @csrf
     <input type="submit" value="ログアウト">

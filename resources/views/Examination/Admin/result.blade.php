@@ -8,6 +8,7 @@
 <body>
 	<h1>試験用記事追加完了フォーム</h1>
 	<a>記事の追加ができました</a>
+	<a href ="index">管理者ページへ</a>
 	<form id="logout-form" action="{{ route('logout') }}" method="POST">
     	@csrf
     	<input type="submit" value="ログアウト">

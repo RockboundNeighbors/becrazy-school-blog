@@ -27,8 +27,12 @@
                 <dt>本文</dt>
                 <dd><textarea name="content" required></textarea></dd>
             </dl>
+            <dl>
+                <dt>URL</dt>
+                <dd><div>https://www.becrazy-school-blog(仮)/article/</div><textarea name= "slug" required></textarea></dd>
             <input type="submit" value="投稿">
         </form>
+        <a href ="index">管理者ページへ</a>
 <form id="logout-form" action="{{ route('logout') }}" method="POST">
     @csrf
     <input type="submit" value="ログアウト">

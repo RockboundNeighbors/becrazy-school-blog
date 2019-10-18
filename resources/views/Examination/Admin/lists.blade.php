@@ -8,7 +8,7 @@
 <body>
     <div class="flex-center position-ref">
         <h1>記事のリスト</h1>
-        <form method="POST" action="delete">
+        <form method="POST" action="titledelete">
             @csrf
             <table border="1" cellspacing="0" cellpadding="5" align="left">
                 <thead>
@@ -18,6 +18,7 @@
                 </thead>
                 <tbody>
                     @foreach ($titlelists as $title)
+                    @continue ($title->deleted_at != NULL)
                         <tr>
                             <td><input type="checkbox" name="ids[]" value="{{ $title->id }}"></td>
                             <td>{{ $title->id }}</td>
@@ -28,8 +29,10 @@
                     @endforeach
                 </tbody>
             </table>
+            <input type="submit" value="選択した記事を削除する">
         </form>
     </div>
+    <a href ="index">管理者ページへ</a>
     <form id="logout-form" action="{{ route('logout') }}" method="POST">
     @csrf
     <input type="submit" value="ログアウト">
