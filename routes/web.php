@@ -36,9 +36,10 @@ Route::prefix('Examination')->group(function(){
 	Route::post('category_delete','ExamAdminController@categorydelete');
 
 	//閲覧関連
-	Route::get('top',function(){
-		return view('Examination/top');
-	});
+	Route::get('top','ExamController@top');
+	Route::get('article_lists','ExamController@article');
+	Route::get('tag_lists','EcamController@tag');
+	Route::get('category_lists','ExamController@category');
 
 	//ログイン機能とかもいれたんだったかな？
 	Route::get('login', 'Auth\ExamLoginController@showLoginForm')->name('login');
