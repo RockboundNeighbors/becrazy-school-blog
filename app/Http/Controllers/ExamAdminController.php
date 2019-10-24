@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Taxonomy;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -36,7 +37,7 @@ class ExamAdminController extends Controller{
 		$post->slug = $request->slug;
 		$post->mime_type = "text/html";
 		$post->save();
-		return view('Examination.Admin.result');
+		return view('Examination.Admin.result',array('resulttype'=>"title"));
 	}
 
 	public function titlelists(){
@@ -49,12 +50,28 @@ class ExamAdminController extends Controller{
 		return view('Examination.Admin.deleted_lists',array('titlelists'=>$deleted_lists));
 	}
 
-	public function titleeditform($id){
+	public function title_editform($id){
 		$title = Post::find($id);
 		if(is_null($title)){
-			return redirect("Examination/add");
+			return redirect("Examination/Admin/lists");
 		}
-		return view("Examination.Admin.titleeditform",array("titleedit" => $title));
+		return view("Examination.Admin.title_editform",array("title_edit" => $title));
+	}
+
+	public function title_edit(Request $request){
+		$request->validate([
+			'id' =>'required',
+			'title' => 'required|string',
+			'content' => 'required|string',
+			'status' => 'required',
+			'slug' => 'required']);
+		$title = Post::find($request->id);
+		$title->title = $request->title;
+		$title->content = $request->content;
+		$title->status = $request->status;
+		$title->slug = $request->slug;
+		$title->save();
+		return redirect("Examination/Admin/lists");
 	}
 
 	public function titledelete(Request $request){
@@ -78,19 +95,55 @@ class ExamAdminController extends Controller{
 		return redirect("Examination/deleted_lists");
 	}
 
-	public function categoryaddform(){
-		return view("Examination.Admin.categoryaddform");
+	public function category_addform(){
+		return view("Examination.Admin.category_addform");
 	}
 
-	public function categorieslist(){
-
+	public function category_add(Request $request){
+		$validatedData = $request->validate([
+			'category' => 'required', 
+			'slug' =>'required',
+			'type' =>'required']);
+		$taxonomy = new Taxonomy();
+		$taxonomy->slug = $request->slug;
+		$taxonomy->type = $request->type;
+		$taxonomy->name =$request->name;
+		$taxonomy->description = $request->description;
+		$taxonomy->save();		
+		return view("Examination.Admin.result",array("type"=>"title"));
 	}
 
-	public function categoryedit(){
-
+	public function category_lists(){
+		$category_lists = Taxonomy::all();
+		return view("Examination.Admin.category_lists",array("category_lists" => $category_lists));
 	}
 
-	public function categorydelete(){
+	public function category_editform($id){
+		$category = Taxonomy::find($id);
+		if(is_null($category)){
+			return redirect("Examination/Admin/category_lists");
+		}
+		return view("Examination.Admin.category_editform",array("category_edit" => $category));
+	}
 
+	public function category_edit(Request $request){
+		$request->validate([
+			'title' => 'required',
+			'content' => 'required',
+			'slug' => 'required'
+			]);
+		$cate = Taxonomy::find($request->id);
+		$cate->title = $request->title;
+		$cate->content = $request->content;
+		$cate->slug = $request->slug;
+		$cate->save();
+		return redirect("Examination/Admin/lists");
+	}
+
+	public function categorydelete(Request $request){
+		validate([
+			'ids' => 'array|required']);
+		Taxonomy::destroy($request->ids);
+		return redirect("Examination/Admin/lists");
 	}
 }

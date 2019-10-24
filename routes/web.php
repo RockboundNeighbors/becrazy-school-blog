@@ -19,19 +19,21 @@ Route::prefix('Examination')->group(function(){
 
 	Route::get('index','ExamAdminController@index');
 	//記事関連 管理者が操作するところ
-	Route::get('titleaddform','ExamAdminController@titleaddform');
-	Route::post('titleadd','ExamAdminController@titleadd');
-	Route::get('titlelists','ExamAdminController@titlelists');
+	Route::get('title_addform','ExamAdminController@titleaddform');
+	Route::post('title_add','ExamAdminController@titleadd');
+	Route::get('title_lists','ExamAdminController@titlelists');
 	Route::get('deleted_lists','ExamAdminController@deleted_lists');
-	Route::get('titleedit{id}','ExamAdminController@titleeditform');
-	Route::post('titleedit','ExamAdminController@titleedit');
-	Route::post('titledelete','ExamAdminController@titledelete');
+	Route::get('title_edit{id}','ExamAdminController@titleeditform');
+	Route::post('title_edit','ExamAdminController@titleedit');
+	Route::post('title_delete','ExamAdminController@titledelete');
 	
 	//カテゴリー関連
-	Route::get('categorieslist','ExamAdminController@categorieslist');
-	Route::get('categoryaddform','ExamAdminController@categoryaddform');
-	Route::post('categoryedit','ExamAdminController@categoryedit');
-	Route::post('categorydelete','ExamAdminController@categorydelete');
+	Route::get('category_lists','ExamAdminController@category_lists');
+	Route::post('category_add','ExamAdminController@category_add');
+	Route::get('category_addform','ExamAdminController@category_addform');
+	Route::get('category_edit{id}','ExamAdminController@category_editform');
+	Route::post('category_edit','ExamAdminController@category_edit');
+	Route::post('category_delete','ExamAdminController@categorydelete');
 
 	//閲覧関連
 	Route::get('top',function(){

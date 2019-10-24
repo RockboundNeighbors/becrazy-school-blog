@@ -6,18 +6,18 @@
 </head>
 <body>
 	<h1>記事関連目次</h1>
-	<a href ='titleaddform'>記事追加する</a>
+	<a href ='title_addform'>記事追加する</a>
 	<br>
-	<a href ='titlelists'>記事一覧</a>
+	<a href ='title_lists'>記事一覧</a>
 	<br>
 	<a href ='deleted_lists'>削除済記事一覧</a>
 	<hr>
 	<hr>
 	<h1>カテゴリー関連目次</h1>
-	<a href ='categoryaddform'>カテゴリー追加</a>
+	<a href ='category_addform'>カテゴリー追加</a>
 	<br>
-	<a href ='categorieslist'>カテゴリーリスト</a>
+	<a href ='category_lists'>カテゴリーリスト</a>
 	<br>
-	<a href ='deleted_gategories'>
+	<a href ='deleted_categories'>
 	削除済カテゴリーリスト</a>
 </body>
