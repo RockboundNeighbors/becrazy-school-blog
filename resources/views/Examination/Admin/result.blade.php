@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	@if($type=="title")
+	@if($resulttype=="title")
 		<h1>試験用記事追加完了フォーム</h1>
 		<a>記事の追加ができました</a>
-	@elseif($type=="category")
+	@elseif($resulttype=="category")
 		<h1>試験用カテゴリー追加完了フォーム</h1>
 		<a>カテゴリーの追加ができました</a>
 	@endif

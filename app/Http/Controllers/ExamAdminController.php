@@ -55,7 +55,10 @@ class ExamAdminController extends Controller{
 		if(is_null($title)){
 			return redirect("Examination/Admin/lists");
 		}
-		return view("Examination.Admin.title_editform",array("title_edit" => $title));
+
+		$category = Taxonomy::whereType('category')->select('name')->get();
+
+		return view("Examination.Admin.title_editform",compact('title','category'));
 	}
 
 	public function title_edit(Request $request){

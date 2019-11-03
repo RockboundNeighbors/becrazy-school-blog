@@ -16,7 +16,7 @@
             </ul>
         </div>
         @endif
-        <form method="POST" action="titleadd">
+        <form method="POST" action="title_add">
             @csrf
             <input type="hidden" name="userid" value="{{Auth::id()}}"
             <dl>

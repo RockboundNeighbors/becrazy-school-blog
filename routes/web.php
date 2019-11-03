@@ -23,7 +23,7 @@ Route::prefix('Examination')->group(function(){
 	Route::post('title_add','ExamAdminController@titleadd');
 	Route::get('title_lists','ExamAdminController@titlelists');
 	Route::get('deleted_lists','ExamAdminController@deleted_lists');
-	Route::get('title_edit{id}','ExamAdminController@titleeditform');
+	Route::get('title_edit{id}','ExamAdminController@title_editform');
 	Route::post('title_edit','ExamAdminController@titleedit');
 	Route::post('title_delete','ExamAdminController@titledelete');
 	
@@ -35,11 +35,15 @@ Route::prefix('Examination')->group(function(){
 	Route::post('category_edit','ExamAdminController@category_edit');
 	Route::post('category_delete','ExamAdminController@categorydelete');
 
+	
+
 	//閲覧関連
 	Route::get('top','ExamController@top');
-	Route::get('article_lists','ExamController@article');
-	Route::get('tag_lists','EcamController@tag');
-	Route::get('category_lists','ExamController@category');
+	Route::get('article_list','ExamController@article');
+	Route::get('tag_list','ExamController@tag');
+	Route::get('tag_article_list{$id}','ExamController@tag_article');
+	Route::get('category_list','ExamController@category');
+	Route::get('category_article_list','ExamController@category_article');
 
 	//ログイン機能とかもいれたんだったかな？
 	Route::get('login', 'Auth\ExamLoginController@showLoginForm')->name('login');

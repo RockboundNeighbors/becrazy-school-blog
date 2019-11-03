@@ -22,7 +22,7 @@
                         <tr>
                             <td><input type="checkbox" name="ids[]" value="{{ $title->id }}"></td>
                             <td>{{ $title->id }}</td>
-                            <td><a href="titleedit{{$title->id}}">{{ $title->title }}</a></td>
+                            <td><a href="title_edit{{$title->id}}">{{ $title->title }}</a></td>
                             
                             
                         </tr>

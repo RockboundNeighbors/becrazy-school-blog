@@ -11,7 +11,7 @@
         <input type="hidden" name="id" value="{{ $category_edit->id }}">
         <dl>
             <dt>カテゴリー名</dt>
-            <dd><input type="text" name="title" required>{{ $category_edit->name }}</dd>
+            <dd><input type="text" name="title" required value ="{{ $category_edit->name }}"></dd>
         </dl>
         <dl>
             <dt>メモ</dt>

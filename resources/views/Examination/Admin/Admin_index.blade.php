@@ -18,6 +18,4 @@
 	<br>
 	<a href ='category_lists'>カテゴリーリスト</a>
 	<br>
-	<a href ='deleted_categories'>
-	削除済カテゴリーリスト</a>
 </body>
