@@ -24,7 +24,7 @@ Route::prefix('Examination')->group(function(){
 	Route::get('title_lists','ExamAdminController@titlelists');
 	Route::get('deleted_lists','ExamAdminController@deleted_lists');
 	Route::get('title_edit{id}','ExamAdminController@title_editform');
-	Route::post('title_edit','ExamAdminController@titleedit');
+	Route::post('title_edit','ExamAdminController@title_edit');
 	Route::post('title_delete','ExamAdminController@titledelete');
 	
 	//カテゴリー関連
@@ -34,7 +34,10 @@ Route::prefix('Examination')->group(function(){
 	Route::get('category_edit{id}','ExamAdminController@category_editform');
 	Route::post('category_edit','ExamAdminController@category_edit');
 	Route::post('category_delete','ExamAdminController@categorydelete');
-
+	Route::get('tag_lists','ExamAdminController@tag_lists');
+	Route::get('tag_edit{id}','ExamAdminController@tag_editform');
+	Route::post('tag_edit','ExamAdminController@tag_edit');
+	Route::post('tag_delete','ExamAdminController@tag_delete');
 	
 
 	//閲覧関連

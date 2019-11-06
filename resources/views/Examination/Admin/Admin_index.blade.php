@@ -18,4 +18,6 @@
 	<br>
 	<a href ='category_lists'>カテゴリーリスト</a>
 	<br>
+	<a href ='tag_lists'>タグリスト</a>
+	<br>
 </body>

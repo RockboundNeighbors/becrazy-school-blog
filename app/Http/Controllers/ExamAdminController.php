@@ -56,9 +56,10 @@ class ExamAdminController extends Controller{
 			return redirect("Examination/Admin/lists");
 		}
 
-		$category = Taxonomy::whereType('category')->select('name')->get();
+		$category = Taxonomy::whereType('category')->get();
+		$tag = Taxonomy::whereType('tag')->get();
 
-		return view("Examination.Admin.title_editform",compact('title','category'));
+		return view("Examination.Admin.title_editform",compact('title','category','tag'));
 	}
 
 	public function title_edit(Request $request){
@@ -67,13 +68,20 @@ class ExamAdminController extends Controller{
 			'title' => 'required|string',
 			'content' => 'required|string',
 			'status' => 'required',
-			'slug' => 'required']);
-		$title = Post::find($request->id);
-		$title->title = $request->title;
-		$title->content = $request->content;
-		$title->status = $request->status;
-		$title->slug = $request->slug;
-		$title->save();
+			'slug' => 'required',
+			//is_arrayをけす
+			'tags' => 'array']);
+		$post = Post::find($request->id);
+		$post->title = $request->title;
+		$post->content = $request->content;
+		$post->status = $request->status;
+		$post->slug = $request->slug;
+		$post->save();
+		//attach
+		$post->taxonomy()->detach();
+		$post->taxonomy()->attach($request->category);
+		$post->taxonomy()->attach($request->tags);
+
 		return redirect("Examination/Admin/lists");
 	}
 
@@ -117,7 +125,7 @@ class ExamAdminController extends Controller{
 	}
 
 	public function category_lists(){
-		$category_lists = Taxonomy::all();
+		$category_lists = Taxonomy::whereType('category')->get();
 		return view("Examination.Admin.category_lists",array("category_lists" => $category_lists));
 	}
 
@@ -144,6 +152,40 @@ class ExamAdminController extends Controller{
 	}
 
 	public function categorydelete(Request $request){
+		validate([
+			'ids' => 'array|required']);
+		Taxonomy::destroy($request->ids);
+		return redirect("Examination/Admin/lists");
+	}
+
+		public function tag_lists(){
+		$tag_lists = Taxonomy::whereType('tag')->get();
+		return view("Examination.Admin.tag_lists",array("tag_lists" => $tag_lists));
+	}
+
+	public function tag_editform($id){
+		$tag = Taxonomy::find($id);
+		if(is_null($tag)){
+			return redirect("Examination/Admin/tag_lists");
+		}
+		return view("Examination.Admin.tag_editform",array("tag_edit" => $tag));
+	}
+
+	public function tag_edit(Request $request){
+		$request->validate([
+			'title' => 'required',
+			'content' => 'required',
+			'slug' => 'required'
+			]);
+		$tag = Taxonomy::find($request->id);
+		$tag->title = $request->title;
+		$tag->content = $request->content;
+		$tag->slug = $request->slug;
+		$tag->save();
+		return redirect("Examination/Admin/lists");
+	}
+
+	public function tag_delete(Request $request){
 		validate([
 			'ids' => 'array|required']);
 		Taxonomy::destroy($request->ids);

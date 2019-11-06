@@ -19,7 +19,7 @@
         <form method="POST" action="category_add">
             @csrf
             <dl>
-                <dt>追加カテゴリー</dt>
+                <dt>追加カテゴリーorタグ</dt>
                 <dd>
                     <input type="text" name="category" required>
                 </dd>
