@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport">
     <title>カテゴリーリスト</title>
 </head>
 <body>
