@@ -82,7 +82,7 @@ class ExamAdminController extends Controller{
 		$post->taxonomy()->attach($request->category);
 		$post->taxonomy()->attach($request->tags);
 
-		return redirect("Examination/lists");
+		return redirect("Examination/title_lists");
 	}
 
 	public function titledelete(Request $request){
@@ -140,12 +140,12 @@ class ExamAdminController extends Controller{
 	public function category_edit(Request $request){
 		$request->validate([
 			'name' => 'required',
-			'decription' => 'required',
+			'description' => 'required',
 			'slug' => 'required'
 			]);
 		$cate = Taxonomy::find($request->id);
 		$cate->name = $request->name;
-		$cate->decription = $request->decription;
+		$cate->description = $request->description;
 		$cate->slug = $request->slug;
 		$cate->save();
 		return redirect("Examination/category_lists");

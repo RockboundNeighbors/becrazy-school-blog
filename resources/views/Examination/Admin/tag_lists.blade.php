@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport">
-    <title>タグーリスト</title>
+    <title>タグリスト</title>
 </head>
 <body>
     <div class="flex-center position-ref">
-        <h1>カテゴリーのリスト</h1>
+        <h1>タグのリスト</h1>
         <form method="POST" action="tag_delete">
             @csrf
             <table border="1" cellspacing="0" cellpadding="5" align="left">
