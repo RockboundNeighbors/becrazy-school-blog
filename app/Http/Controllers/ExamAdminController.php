@@ -53,7 +53,7 @@ class ExamAdminController extends Controller{
 	public function title_editform($id){
 		$title = Post::find($id);
 		if(is_null($title)){
-			return redirect("Examination/Admin/lists");
+			return redirect("Examination/lists");
 		}
 
 		$category = Taxonomy::whereType('category')->get();
@@ -82,7 +82,7 @@ class ExamAdminController extends Controller{
 		$post->taxonomy()->attach($request->category);
 		$post->taxonomy()->attach($request->tags);
 
-		return redirect("Examination/Admin/lists");
+		return redirect("Examination/lists");
 	}
 
 	public function titledelete(Request $request){
@@ -132,30 +132,30 @@ class ExamAdminController extends Controller{
 	public function category_editform($id){
 		$category = Taxonomy::find($id);
 		if(is_null($category)){
-			return redirect("Examination/Admin/category_lists");
+			return redirect("Examination/category_lists");
 		}
 		return view("Examination.Admin.category_editform",array("category_edit" => $category));
 	}
 
 	public function category_edit(Request $request){
 		$request->validate([
-			'title' => 'required',
-			'content' => 'required',
+			'name' => 'required',
+			'decription' => 'required',
 			'slug' => 'required'
 			]);
 		$cate = Taxonomy::find($request->id);
-		$cate->title = $request->title;
-		$cate->content = $request->content;
+		$cate->name = $request->name;
+		$cate->decription = $request->decription;
 		$cate->slug = $request->slug;
 		$cate->save();
-		return redirect("Examination/Admin/lists");
+		return redirect("Examination/category_lists");
 	}
 
 	public function categorydelete(Request $request){
 		validate([
 			'ids' => 'array|required']);
 		Taxonomy::destroy($request->ids);
-		return redirect("Examination/Admin/lists");
+		return redirect("Examination/lists");
 	}
 
 		public function tag_lists(){
@@ -166,29 +166,29 @@ class ExamAdminController extends Controller{
 	public function tag_editform($id){
 		$tag = Taxonomy::find($id);
 		if(is_null($tag)){
-			return redirect("Examination/Admin/tag_lists");
+			return redirect("Examination/tag_lists");
 		}
 		return view("Examination.Admin.tag_editform",array("tag_edit" => $tag));
 	}
 
 	public function tag_edit(Request $request){
 		$request->validate([
-			'title' => 'required',
-			'content' => 'required',
+			'name' => 'required',
+			'description' => 'required',
 			'slug' => 'required'
 			]);
 		$tag = Taxonomy::find($request->id);
-		$tag->title = $request->title;
-		$tag->content = $request->content;
+		$tag->name = $request->name;
+		$tag->description = $request->description;
 		$tag->slug = $request->slug;
 		$tag->save();
-		return redirect("Examination/Admin/lists");
+		return redirect("Examination/tag_lists");
 	}
 
 	public function tag_delete(Request $request){
 		validate([
 			'ids' => 'array|required']);
 		Taxonomy::destroy($request->ids);
-		return redirect("Examination/Admin/lists");
+		return redirect("Examination/lists");
 	}
 }

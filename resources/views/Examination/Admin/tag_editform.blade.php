@@ -3,27 +3,27 @@
 <head>
     <meta charset="utf-8">
 
-    <title>カテゴリー編集用フォーム</title>
+    <title>タグ編集用フォーム</title>
 </head>
 <body>
-    <h1>カテゴリー編集ぺージ</h1>
-    <form method="POST" action="category_edit">
+    <h1>タグ編集ぺージ</h1>
+    <form method="POST" action="tag_edit">
         @csrf
-        <input type="hidden" name="id" value="{{ $category_edit->id }}">
+        <input type="hidden" name="id" value="{{ $tag_edit->id }}">
         <dl>
-            <dt>カテゴリー名</dt>
-            <dd><input type="text" name="name" required value ="{{ $category_edit->name }}"></dd>
+            <dt>タグ名</dt>
+            <dd><input type="text" name="name" required value ="{{ $tag_edit->name }}"></dd>
         </dl>
         <dl>
             <dt>URL</dt>
                 <dd>
-                    <textarea name="slug" required>{{ $category_edit->slug }}</textarea>
+                    <textarea name="slug" required>{{ $tag_edit->slug }}</textarea>
                 </dd>
         </dl>
         <dl>
             <dt>説明文</dt>
                 <dd>
-                    <textarea name="description">{{$category_edit->description}}</textarea>
+                    <textarea name="description">{{$tag_edit->description}}</textarea>
                 </dd>
         </dl>
         <input type="submit" value="更新">

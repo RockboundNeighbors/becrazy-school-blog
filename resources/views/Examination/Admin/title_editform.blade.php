@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>記事編集ぺージ</h1>
-    <form method="POST" action="edit">
+    <form method="POST" action="title_edit">
         @csrf
         <input type="hidden" name="id" value="{{ $title->user_id }}">
         <dl>
@@ -38,7 +38,15 @@
             <dt>関連カテゴリー設定</dt>
             <dd>
                 @foreach ($category as $name)
-                <input type='checkbox' name='category' value='{{$name}}'>{{$name}}
+                <input type='radio' name='category' value='{{$name->id}}'>{{$name->name}}
+                @endforeach
+            </dd>
+        </dl>
+         <dl>
+            <dt>関連タグ設定</dt>
+            <dd>
+                @foreach ($tag as $name)
+                <input type='checkbox' name='tags[]' value='{{$name->id}}'>{{$name->name}}
                 @endforeach
             </dd>
         </dl>
