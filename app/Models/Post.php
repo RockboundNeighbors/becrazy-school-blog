@@ -8,6 +8,6 @@ class Post extends Model
 {
     //
     public function taxonomy(){
-        return $this->belongsToMany('App\Models\Taxonomy','Taxonomy_relationship');
+        return $this->belongsToMany('App\Models\Taxonomy','taxonomy_relationships');
     }
 }
