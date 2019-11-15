@@ -45,9 +45,10 @@ Route::prefix('Examination')->group(function(){
 	Route::get('top','ExamController@top');
 	Route::get('article_list','ExamController@article');
 	Route::get('tag_list','ExamController@tag');
-	Route::get('tag_article_list{$id}','ExamController@tag_article');
+	Route::get('tag_article_list{id}','ExamController@tag_article');
 	Route::get('category_list','ExamController@category');
 	Route::get('category_article_list','ExamController@category_article');
+	Route::get('view_article/{slug}','ExamController@view_article');
 
 	//ログイン機能とかもいれたんだったかな？
 	Route::get('login', 'Auth\ExamLoginController@showLoginForm')->name('login');

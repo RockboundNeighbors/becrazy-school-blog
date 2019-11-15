@@ -38,5 +38,10 @@ class ExamController extends Controller{
 	function category_article($id){
 		$article_list = Taxonomy::find($id)->posts();
 	}
+
+	function view_article($slug){
+		$article = Post::whereSlug($slug)->first();
+		return view("Examination.view_article",array("article"=>$article));
+	}
 }
 
