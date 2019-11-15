@@ -1,12 +1,6 @@
-<!doctype html>
-
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport">
-    <title>一番最初のページ</title>
-</head>
-<body>
+@extends('layouts.list')
+@section('title','トップ画面')
+@section('list')
 	<a href ="article_list">記事一覧へ</a>
 	<hr>
 	<hr>
@@ -14,4 +8,4 @@
 	<hr>
 	<hr>
 	<a href ="tag_list">タグ一覧へ</a>
-</body>
+@endsection
