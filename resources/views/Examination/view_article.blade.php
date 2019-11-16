@@ -1,6 +1,6 @@
 @extends('layouts.view_article_layout')
-@section('title', $article->title)
+@section('title', $articles->title)
 @section('content')
-	<h1>{{$article->title}}<h1>
-	<h3>{{$article->content}}</h1>
+	<h1>{{$articles->title}}<h1>
+	<h3>{{$articles->content}}</h1>
 @endsection
