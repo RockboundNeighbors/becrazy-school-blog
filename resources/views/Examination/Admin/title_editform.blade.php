@@ -8,7 +8,7 @@
     <h1>記事編集ぺージ</h1>
     <form method="POST" action="title_edit">
         @csrf
-        <input type="hidden" name="id" value="{{ $title->user_id }}">
+        <input type="hidden" name="id" value="{{ $title->id }}">
         <dl>
             <dt>タイトル</dt>
             <dd>

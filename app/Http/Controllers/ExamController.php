@@ -11,10 +11,12 @@ use Carbon\Carbon;
 
 class ExamController extends Controller{
 
+//初期ページ
 	function top(){
 		return view("Examination.top");
 	}
 
+//初期ページからのリンク
 	function article(){
 		$article = Post::all();
 		return view("Examination.article",array("articles"=>$article));
@@ -25,23 +27,26 @@ class ExamController extends Controller{
 		return view("Examination.tag",array("tags"=>$tag));
 	}
 
-	function tag_article($id){
-		$article_list = Taxonomy::find($id)->posts();
-		return view("Examination.tag_article");
-	}
-	
 	function category(){
 		$category = Taxonomy::whereType("category")->get();
 		return view("Examination.category",array("categories"=>$category));
 	}
 
-	function category_article($id){
-		$article_list = Taxonomy::find($id)->posts();
-	}
-
+//記事の表示メソッド
 	function view_article($slug){
 		$article = Post::whereSlug($slug)->first();
-		return view("Examination.view_article",array("article"=>$article));
+		return view("Examination.view_article",array("articles"=>$article));
+	}
+
+	function tag_article($id){
+		$article_list = Taxonomy::find($id)->posts();
+		return view("Examination.tag_article");
+	}
+	
+	function category_article_list($name){
+		$taxonomy = Taxonomy::whereName($name)->first();
+		$taxonomy_posts = $taxonomy->post;
+		return view("Examination.category_article_list",array("articles"=>$taxonomy_posts));
 	}
 }
 
