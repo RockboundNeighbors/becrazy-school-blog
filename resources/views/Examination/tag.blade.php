@@ -3,7 +3,7 @@
 @section('list')
     <h1>タグの一覧</h1>
         @foreach ($tags as $tag)
-        <a href = "{{$tag->slug}}">
+        <a href = "tag_article_list/{{$tag->name}}">
             {{$tag->name}}
         </a>
         <br>

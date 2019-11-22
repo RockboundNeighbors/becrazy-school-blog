@@ -48,6 +48,7 @@ Route::prefix('Examination')->group(function(){
 	Route::get('tag_article_list{id}','ExamController@tag_article');
 	Route::get('category_list','ExamController@category');
 	Route::get('category_article_list/{name}','ExamController@category_article_list');
+	Route::get('tag_article_list/{name}','ExamController@tag_article_list');
 	Route::get('view_article/{slug}','ExamController@view_article');
 
 	//ログイン機能とかもいれたんだったかな？

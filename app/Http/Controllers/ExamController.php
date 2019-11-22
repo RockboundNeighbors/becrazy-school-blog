@@ -23,13 +23,13 @@ class ExamController extends Controller{
 	}
 
 	function tag(){
-		$tag = Taxonomy::whereType("tag")->get();
-		return view("Examination.tag",array("tags"=>$tag));
+		$taxonomy = Taxonomy::whereType("tag")->get();
+		return view("Examination.taxonomy",array("taxonomy"=>$taxonomy));
 	}
 
 	function category(){
-		$category = Taxonomy::whereType("category")->get();
-		return view("Examination.category",array("categories"=>$category));
+		$taxonomy = Taxonomy::whereType("category")->get();
+		return view("Examination.taxonomy",array("taxonomy"=>$taxonomy));
 	}
 
 //記事の表示メソッド
@@ -46,7 +46,13 @@ class ExamController extends Controller{
 	function category_article_list($name){
 		$taxonomy = Taxonomy::whereName($name)->first();
 		$taxonomy_posts = $taxonomy->post;
-		return view("Examination.category_article_list",array("articles"=>$taxonomy_posts));
+		return view("Examination.category_article_list",array("articles"=>$taxonomy_posts,"name"=>$name));
+	}
+
+	function tag_article_list($name){
+		$taxonomy = Taxonomy::whereName($name)->first();
+		$taxonomy_posts = $taxonomy->post;
+		return view("Examination.tag_article_list",array("articles"=>$taxonomy_posts,"name"=>$name));
 	}
 }
 
