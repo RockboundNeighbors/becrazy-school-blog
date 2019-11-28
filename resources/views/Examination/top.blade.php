@@ -8,4 +8,8 @@
 	<hr>
 	<hr>
 	<a href ="tag_list">タグ一覧へ</a>
+@section('logout')
+	<form id="logout-form" action="{{ route('logout') }}" method="POST">
+    @csrf
+    <input type="submit" value="ログアウト">
 @endsection

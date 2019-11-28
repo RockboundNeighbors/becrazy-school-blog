@@ -11,4 +11,8 @@
     </a>
     <br>
     @endforeach
+@section('logout')
+	<form id="logout-form" action="{{ route('logout') }}" method="POST">
+    @csrf
+    <input type="submit" value="ログアウト">
 @endsection
