@@ -57,8 +57,12 @@ Route::prefix('Examination')->group(function(){
 	Route::post('login', 'Auth\ExamLoginController@login');
 	Route::post('logout', 'Auth\ExamLoginController@logout')->name('logout');
 
-	Route::get('register', 'Auth\ExamRegisterController@showRegistrationForm')->name('register');
+	Route::get('firstregister', 'Auth\ExamRegisterController@firstregisterForm')->name('register');
 	Route::post('register', 'Auth\ExamRegisterController@register');
+
+
+    //初期ユーザー登録フォーム
+	Route::get('firstregister','Auth\ExamRegisterController@firstregisterForm');
 });
 
 
