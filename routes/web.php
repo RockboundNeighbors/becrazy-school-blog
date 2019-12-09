@@ -57,8 +57,8 @@ Route::prefix('Examination')->group(function(){
 	Route::post('login', 'Auth\ExamLoginController@login');
 	Route::post('logout', 'Auth\ExamLoginController@logout')->name('logout');
 
-	Route::get('firstregister', 'Auth\ExamRegisterController@firstregisterForm')->name('register');
-	Route::post('firstregister', 'Auth\ExamRegisterController@firstregister');
+	Route::get('firstregister', 'Auth\ExamFirstRegisterController@firstregisterForm')->name('register');
+	Route::post('firstregister', 'Auth\ExamFirstRegisterController@firstregister');
 
 	Route::get('register', 'Auth\ExamRegisterController@registerForm')->name('register');
 	Route::post('register', 'Auth\ExamRegisterController@register');

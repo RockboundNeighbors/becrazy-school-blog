@@ -8,12 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 
-class ExamRegisterController extends RegisterController
+class ExamFirstRegisterController extends RegisterController
 {
-
-    public function __construct(){
-        $this->middleware("auth");
-    }
     /**
      * Where to redirect users after registration.
      *
@@ -21,9 +17,13 @@ class ExamRegisterController extends RegisterController
      */
     protected $redirectTo = '/Examination/list';
 
-
-
-    function registerForm(){
-        return view('auth.register');
+    function firstregisterForm(){
+    	$usercount = User::count();
+        dump($usercount);
+		if($usercount == 0){
+			return view('auth.firstregister');
+		}else{
+            redirect('Examination/top');
+        }
     }
 }
