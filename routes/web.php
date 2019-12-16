@@ -55,14 +55,19 @@ Route::prefix('Examination')->group(function(){
 	Route::get('login', 'Auth\ExamLoginController@showLoginForm')->name('login');
 
 	Route::post('login', 'Auth\ExamLoginController@login');
+
+
 	Route::post('logout', 'Auth\ExamLoginController@logout')->name('logout');
 
 	Route::get('firstregister', 'Auth\ExamFirstRegisterController@firstregisterForm')->name('register');
 	
-	Route::post('firstregister', 'Auth\RegisterController@register');
+	Route::post('firstregister','Auth\RegisterController@register');
 
-	Route::get('register', 'Auth\ExamRegisterController@registerForm')->name('register');
-	Route::post('register', 'Auth\RegisterController@register');
+	Route::get('register','Auth\ExamRegisterController@registerForm')->name('register');
+	Route::post('register','Auth\RegisterController@register');
+
+	Route::get('passwordreset','ExamAdminController@passwordresetForm');
+
 });
 
 

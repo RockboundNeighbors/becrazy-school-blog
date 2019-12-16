@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Taxonomy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Hash;
 
 
 class ExamAdminController extends Controller{
@@ -190,5 +192,12 @@ class ExamAdminController extends Controller{
 			'ids' => 'array|required']);
 		Taxonomy::destroy($request->ids);
 		return redirect("Examination/lists");
+	}
+
+	public function changePasswordForm(){
+		return view("Examination.ChangePasswordForm");
+	}
+
+	public function changePassword(Request $request){
 	}
 }

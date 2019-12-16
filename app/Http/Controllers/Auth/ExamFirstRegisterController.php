@@ -19,11 +19,11 @@ class ExamFirstRegisterController extends RegisterController
 
     function firstregisterForm(){
     	$usercount = User::count();
-        dump($usercount);
+        //dump($usercount);
 		if($usercount == 0){
 			return view('auth.firstregister');
 		}else{
-            redirect('Examination/top');
+            return redirect('Examination/top');
         }
     }
 }

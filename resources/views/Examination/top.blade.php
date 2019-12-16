@@ -17,10 +17,9 @@
                 <input type="submit" value="ログアウト">
             @else
                 <a href="{{ route('login') }}">ログイン</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">ユーザー新規登録</a>
-                @endif
             @endauth
+            <a href="{{ route('register') }}">ユーザー新規登録</a>
         </div>
 	@endif
+    <a href= "passwordreset">パスワードをリセットしたいんですか？？？？？？？？？？</a>
 @endsection
