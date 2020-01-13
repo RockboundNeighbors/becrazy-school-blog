@@ -8,6 +8,7 @@ use App\Models\Taxonomy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Models\User;
 use Hash;
 
 
@@ -199,5 +200,18 @@ class ExamAdminController extends Controller{
 	}
 
 	public function changePassword(Request $request){
+		$user = User::find($request->id);
+
+		if(!Hash::check($request->oldpassword,$user->password)){
+			return redirect("Examination/ChangePasswordForm",[$check=>'oldfalse']);
+		}
+		if($request->newpassword != $request->newpasswordcheck){
+			return redirect("Examination/ChangePasswordForm",[$check => 'newfalse']);
+		}
+
+		$user->password = $request->newpassword;
+		$user->save();
+
+		return view("Examination/SuccessForm");
 	}
 }

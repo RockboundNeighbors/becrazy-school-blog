@@ -66,7 +66,8 @@ Route::prefix('Examination')->group(function(){
 	Route::get('register','Auth\ExamRegisterController@registerForm')->name('register');
 	Route::post('register','Auth\RegisterController@register');
 
-	Route::get('passwordreset','ExamAdminController@passwordresetForm');
+	Route::get('changepassword','ExamAdminController@changePasswordForm');
+	Route::post('changepassword','ExamAdminController@changePassword')->name('changePassword');
 
 });
 
