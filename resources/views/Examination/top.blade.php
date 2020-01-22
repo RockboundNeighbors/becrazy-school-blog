@@ -21,5 +21,5 @@
             <a href="{{ route('register') }}">ユーザー新規登録</a>
         </div>
 	@endif
-    <a href= "passwordreset">パスワードをリセットしたいんですか？？？？？？？？？？</a>
+    <a href= "changepassword">パスワードを変更する</a>
 @endsection

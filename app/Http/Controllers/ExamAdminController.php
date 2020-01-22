@@ -123,8 +123,8 @@ class ExamAdminController extends Controller{
 		$taxonomy->type = $request->type;
 		$taxonomy->name =$request->name;
 		$taxonomy->description = $request->description;
-		$taxonomy->save();		
-		return view("Examination.Admin.result",array("type"=>"title"));
+		$taxonomy->save();
+		return view("Examination.Admin.result",array("resulttype"=>$request->type));
 	}
 
 	public function category_lists(){
@@ -154,11 +154,15 @@ class ExamAdminController extends Controller{
 		return redirect("Examination/category_lists");
 	}
 
-	public function categorydelete(Request $request){
-		validate([
+	public function category_delete(Request $request){
+		$request->validate([
 			'ids' => 'array|required']);
-		Taxonomy::destroy($request->ids);
-		return redirect("Examination/lists");
+		$taxonomy_lists = Taxonomy::find($request->ids);
+		foreach($taxonomy_lists as $taxonomy){
+			$taxonomy->post()->detach();
+			Taxonomy::destroy($taxonomy->id);
+		}
+		return redirect("Examination/category_lists");
 	}
 
 		public function tag_lists(){
@@ -189,29 +193,42 @@ class ExamAdminController extends Controller{
 	}
 
 	public function tag_delete(Request $request){
-		validate([
+		$request->validate([
 			'ids' => 'array|required']);
+		$taxonomy_lists = Taxonomy::find($request->ids);
+		foreach($taxonomy_lists as $taxonomy){
+			$taxonomy->post()->detach();
+			Taxonomy::destroy($taxonomy->id);
+		}
 		Taxonomy::destroy($request->ids);
-		return redirect("Examination/lists");
+		return redirect("Examination/tag_lists");
 	}
 
 	public function changePasswordForm(){
-		return view("Examination.ChangePasswordForm");
+		$id = Auth::id();
+		dump($id);
+		return view("Examination.ChangePasswordForm",['check' => 'first','id' => $id]);
 	}
 
 	public function changePassword(Request $request){
+		$request->validate([
+			'id' => 'required',
+			'oldpassword' => 'required',
+			'newpassword' => 'required',
+			'newpasswordcheck' => 'required']);
+
 		$user = User::find($request->id);
 
 		if(!Hash::check($request->oldpassword,$user->password)){
-			return redirect("Examination/ChangePasswordForm",[$check=>'oldfalse']);
+			return redirect("Examination/changepassword")->with("result",'古いパスワードが間違ってます。');
 		}
 		if($request->newpassword != $request->newpasswordcheck){
-			return redirect("Examination/ChangePasswordForm",[$check => 'newfalse']);
+			return redirect("Examination/changepassword")->with('result','新しいパスワードが一致しません');
 		}
 
-		$user->password = $request->newpassword;
+		$user->password = bcrypt($request->newpassword);
 		$user->save();
 
-		return view("Examination/SuccessForm");
+		return view("Examination/Success");
 	}
 }

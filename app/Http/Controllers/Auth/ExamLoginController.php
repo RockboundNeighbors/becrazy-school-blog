@@ -9,5 +9,5 @@ class ExamLoginController extends LoginController
      *
      * @var string
      */
-    protected $redirectTo = '/Examination/titlelists';
+    protected $redirectTo = '/Examination/title_lists';
 }

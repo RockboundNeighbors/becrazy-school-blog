@@ -33,7 +33,7 @@ Route::prefix('Examination')->group(function(){
 	Route::get('category_addform','ExamAdminController@category_addform');
 	Route::get('category_edit{id}','ExamAdminController@category_editform');
 	Route::post('category_edit','ExamAdminController@category_edit');
-	Route::post('category_delete','ExamAdminController@categorydelete');
+	Route::post('category_delete','ExamAdminController@category_delete');
 	Route::get('tag_lists','ExamAdminController@tag_lists');
 
 	Route::get('tag_edit{id}','ExamAdminController@tag_editform');

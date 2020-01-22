@@ -7,7 +7,7 @@
 <body>
     <div class="flex-center position-ref">
         <h1>カテゴリーのリスト</h1>
-        <form method="POST" action="categorydelete">
+        <form method="POST" action="category_delete">
             @csrf
             <table border="1" cellspacing="0" cellpadding="5" align="left">
                 <thead>

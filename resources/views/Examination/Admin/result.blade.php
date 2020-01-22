@@ -11,6 +11,9 @@
 	@elseif($resulttype=="category")
 		<h1>試験用カテゴリー追加完了フォーム</h1>
 		<a>カテゴリーの追加ができました</a>
+	@elseif($resulttype=="tag")
+		<h1>試験用タグ追加完了フォーム</h1>
+		<a>タグの追加ができました</a>
 	@endif
 	<br>
 	<a href ="index">管理者ページへ</a>
